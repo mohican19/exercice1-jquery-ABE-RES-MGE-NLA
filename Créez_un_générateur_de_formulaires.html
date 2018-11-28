@@ -1,0 +1,43 @@
+<html><head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.3.1.js"></script>
+    <style>
+      body {
+        margin: 0;
+      }
+      #gauche {
+        float: left;
+        width: 70%;
+        height: 1000px;
+        background: linear-gradient(to left, #3a6186 , #89253e);
+      }
+      #droite {
+        background: white;
+        height: 1000px;
+        padding : 10px;
+        padding-left: 71%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gauche">
+    </div>
+    <div id="droite">
+      Utilisez ces boutons pour créer votre formulaire<br><br>
+      <button id="btn-label">Label</button>
+      <button id="btn-texte">Zone de texte</button>
+      <button id="btn-bouton">Bouton</button>
+    </div>
+
+<script>
+  $('#btn-label').click(function(){
+    $('#droite').append('<section><hr/><label>Texte du label</label><input id="champ" placeholder="label" style="margin: 1em;"></input><button id="new-btn">OK</button></section>');
+    $('#new-btn').click(function(){
+      var nomLabel = $('#champ').val();
+      $('#gauche').append('<span>' + nomLabel + '</span');
+      $('section').remove();
+    });
+  });
+
+</script>
+</body></html>
