@@ -27,6 +27,7 @@
       <button id="btn-label">Label</button>
       <button id="btn-texte">Zone de texte</button>
       <button id="btn-bouton">Bouton</button>
+      <hr/>
     </div>
 
 <script>
@@ -56,6 +57,16 @@
     		});
 
       }
+        
+      $('#btn-texte').click(function(){
+          $('#droite').append('<p class="efface"><label >Id de la zone de texte</label><input  id="id-text"><br><button id="ok-btn">Ok</button></p>');
+          $('#ok-btn').click(function(){
+                var idTexte= $('#id-text').val();
+                $('#gauche').append('<form><input id="' + idTexte + '"></form>');
+                $('.efface').remove();
+                });
+      });
+
       CheckButton = true;
   	});
     
