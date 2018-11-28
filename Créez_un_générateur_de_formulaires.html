@@ -38,6 +38,26 @@
       $('section').remove();
     });
   });
+    
+    var CheckButton = false;
+  	$("#btn-bouton").click(function(){
+      
+      if(CheckButton == false) {
+    		$("#droite").append('<label class="custom">Texte du bouton</label>');
+    		$("#droite").append('<input id="valeur-btn" class="custom">');
+    		$("#droite").append('<button id="btn-envoyer" class="custom">OK</button>');
+ 
 
+    		$("#btn-envoyer").click(function(){
+    			var valeur = $("#valeur-btn").val();
+    			$("#gauche").append("<button>" + valeur + "</button>");
+          $(".custom").remove();
+          CheckButton = false;
+    		});
+
+      }
+      CheckButton = true;
+  	});
+    
 </script>
 </body></html>
