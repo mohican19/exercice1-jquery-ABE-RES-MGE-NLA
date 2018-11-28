@@ -10,14 +10,32 @@
         float: left;
         width: 70%;
         height: 1000px;
+        padding: 20px;
         background: linear-gradient(to left, #3a6186 , #89253e);
       }
       #droite {
         background: white;
         height: 1000px;
         padding : 10px;
-        padding-left: 71%;
+        padding-left: 75%;
       }
+      .enLigne, #ok-btn
+      {
+        display: inline-block;
+        margin: 10px 6px;
+      }
+
+      #enBlock
+      {
+        display: block;
+        padding: 4px;
+      }
+
+      label
+      {
+        margin-right: 10px;
+      }
+
     </style>
   </head>
   <body>
@@ -35,46 +53,49 @@
 
   var CheckButton = false;
 
-<!-- bouton label-ABE -->
+// Code du label : ABE
+
     $('#btn-label').click(function(){
       if(CheckButton == false) {
         CheckButton = true;
-        $('#droite').append('<section><hr/><label>Texte du label</label><input id="champ" placeholder="label" style="margin: 1em;"></input><button id="new-btn">OK</button></section>');
+        $('#btn-bouton').after('<section><hr/><label>Texte du label</label><input id="champ" placeholder=" label" style="margin: 1em;"></input><button id="new-btn">OK</button></section>');
         $('#new-btn').click(function(){
           var nomLabel = $('#champ').val();
-          $('#gauche').append('<span>' + nomLabel + '</span');
+          $('#gauche').append('<span class="enLigne">' + nomLabel + '</span');
           $('section').remove();
-          CheckButton = false
+          CheckButton = false;
         });
       }
     });
 
-<!-- bouton zone de texte-MGE -->
+// Code du bouton : NLA & RES
+
   	$("#btn-bouton").click(function(){
       if(CheckButton == false) {
         CheckButton = true;
-    		$("#droite").append('<label class="custom">Texte du bouton</label>');
-    		$("#droite").append('<input id="valeur-btn" class="custom">');
-    		$("#droite").append('<button id="btn-envoyer" class="custom">OK</button>');
+    		$('#btn-bouton').after('<label class="custom"><hr />Texte du bouton</label>');
+    		$('.custom').after('<input id="valeur-btn" class="custom">');
+    		$('#valeur-btn').after('<button id="btn-envoyer" class="custom">OK</button>');
     		$("#btn-envoyer").click(function(){
     			var valeur = $("#valeur-btn").val();
-    			$("#gauche").append("<button>" + valeur + "</button>");
+    			$("#gauche").append("<button id='enBlock'>" + valeur + "</button>");
           $(".custom").remove();
-          CheckButton = false
+          CheckButton = false;
     		});
       }
   	});
 
-  <!-- bouton zone de texte-NLA/RSE   -->
+// Code du input text : MGE
+
      $('#btn-texte').click(function(){
       if(CheckButton == false) {
         CheckButton = true;
-        $('#droite').append('<p class="efface"><label >Id de la zone de texte</label><input  id="id-text"><br><button id="ok-btn">Ok</button></p>');
+        $('#btn-bouton').after('<section class="efface"><label > <hr /> Id de la zone de texte</label><input  id="id-text"> <br> <button id="ok-btn"> Ok </button></section>');
         $('#ok-btn').click(function(){
           var idTexte= $('#id-text').val();
-          $('#gauche').append('<form><input id="' + idTexte + '"></form>');
+          $('#gauche').append('<form class="enLigne"><input id="' + idTexte + '"></form><br>');
           $('.efface').remove();
-          CheckButton = false
+          CheckButton = false;
         });
       }
     });
