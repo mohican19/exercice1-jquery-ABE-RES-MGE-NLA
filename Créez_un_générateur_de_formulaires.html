@@ -6,6 +6,7 @@
         margin: 0;
       }
       #gauche {
+        color: white;
         float: left;
         width: 70%;
         height: 1000px;
@@ -31,45 +32,51 @@
     </div>
 
 <script>
-  $('#btn-label').click(function(){
-    $('#droite').append('<section><hr/><label>Texte du label</label><input id="champ" placeholder="label" style="margin: 1em;"></input><button id="new-btn">OK</button></section>');
-    $('#new-btn').click(function(){
-      var nomLabel = $('#champ').val();
-      $('#gauche').append('<span>' + nomLabel + '</span');
-      $('section').remove();
-    });
-  });
-    
-    var CheckButton = false;
-  	$("#btn-bouton").click(function(){
-      
+
+
+  var CheckButton = false;
+
+    $('#btn-label').click(function(){
       if(CheckButton == false) {
+        CheckButton = true;
+        $('#droite').append('<section><hr/><label>Texte du label</label><input id="champ" placeholder="label" style="margin: 1em;"></input><button id="new-btn">OK</button></section>');
+        $('#new-btn').click(function(){
+          var nomLabel = $('#champ').val();
+          $('#gauche').append('<span>' + nomLabel + '</span');
+          $('section').remove();
+          CheckButton = false
+        });
+      }
+    });
+
+  	$("#btn-bouton").click(function(){
+      if(CheckButton == false) {
+        CheckButton = true;
     		$("#droite").append('<label class="custom">Texte du bouton</label>');
     		$("#droite").append('<input id="valeur-btn" class="custom">');
     		$("#droite").append('<button id="btn-envoyer" class="custom">OK</button>');
- 
-
     		$("#btn-envoyer").click(function(){
     			var valeur = $("#valeur-btn").val();
     			$("#gauche").append("<button>" + valeur + "</button>");
           $(".custom").remove();
-          CheckButton = false;
+          CheckButton = false
     		});
-
       }
-        
-      CheckButton = true;
   	});
-    
-     $('#btn-texte').click(function(){
-          $('#droite').append('<p class="efface"><label >Id de la zone de texte</label><input  id="id-text"><br><button id="ok-btn">Ok</button></p>');
-          $('#ok-btn').click(function(){
-                var idTexte= $('#id-text').val();
-                $('#gauche').append('<form><input id="' + idTexte + '"></form>');
-                $('.efface').remove();
-                });
-      });
 
-    
+     $('#btn-texte').click(function(){
+      if(CheckButton == false) {
+        CheckButton = true;
+        $('#droite').append('<p class="efface"><label >Id de la zone de texte</label><input  id="id-text"><br><button id="ok-btn">Ok</button></p>');
+        $('#ok-btn').click(function(){
+          var idTexte= $('#id-text').val();
+          $('#gauche').append('<form><input id="' + idTexte + '"></form>');
+          $('.efface').remove();
+          CheckButton = false
+        });
+      }
+    });
+
+
 </script>
 </body></html>
